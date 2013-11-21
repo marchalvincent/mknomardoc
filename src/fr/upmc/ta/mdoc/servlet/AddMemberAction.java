@@ -28,7 +28,8 @@ public class AddMemberAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("./404").forward(request, response);
+		// on ne peut pas y accéder par le get
+		request.getRequestDispatcher("./401.jsp").forward(request, response);
 	}
 
 	/**
