@@ -16,7 +16,7 @@ if (message != null) {
 	<%
 }
 %>
-<a href="./AddMember.jsp">Add member</a><br />
+<a href="./AddMember">Add member</a><br />
 <a href="./ModifyMember">Modify member</a><br />
 <a href="./DeleteMember">Delete member</a><br />
 </body>

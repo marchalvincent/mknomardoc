@@ -13,14 +13,14 @@ import fr.upmc.ta.mdoc.dao.DAOMember;
 /**
  * Servlet implementation class AddMembmer
  */
-@WebServlet("/AddMemberAction")
-public class AddMemberAction extends HttpServlet {
+@WebServlet("/AddMember")
+public class AddMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddMemberAction() {
+    public AddMember() {
         super();
     }
 
@@ -28,8 +28,7 @@ public class AddMemberAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// on ne peut pas y accéder par le get
-		request.getRequestDispatcher("./401.jsp").forward(request, response);
+		request.getServletContext().getRequestDispatcher("/AddMember.jsp").forward(request, response);
 	}
 
 	/**
@@ -56,7 +55,6 @@ public class AddMemberAction extends HttpServlet {
 		}
 
 		request.getServletContext().getRequestDispatcher("/Main.jsp").forward(request, response);
-		
 	}
 
 }

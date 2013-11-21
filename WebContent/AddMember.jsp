@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="./AddMemberAction" method="POST">
+<form action="./AddMember" method="POST">
 	Login : <input type="text" name="login" /><br />
 	Password : <input type="text" name="password" /><br />
 	Age : <input type="text" name="age" /><br />
