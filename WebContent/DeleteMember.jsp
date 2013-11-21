@@ -1,7 +1,5 @@
-<%@ page import="java.util.ArrayList"%>
 <%@ page import="fr.upmc.ta.mdoc.object.Member"%> 
-<%@ page import="java.util.List"%>
-<%@ page import="java.lang.Iterable"%>
+<%@ page import="fr.upmc.ta.mdoc.object.MembersContainer"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,21 +9,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 	todo liste les members + suppression -->
-<!-- 	 rediriger vers le lien ./DeleteMember le servlet est créé -->
-<h2>Voici la liste des membres :<h2><br />
+<h2>Voici la liste des membres :</h2>
 <%
-	List <Member> members = (List<Member>)request.getSession().getAttribute("members");
-	for(Member member : members){
-		%>
-		<Form methode="post" action="./Deletemember">
-			<p><%=member.toString()%> </p>
-			<input type="hidden" name="deleteMember" value="<%=member.getId()%>" />
-			<input type="submit" value="Modify">
-		</Form>
-		<%
+	Object o = request.getSession().getAttribute("members");
+	if (o instanceof MembersContainer) {
+		MembersContainer members = (MembersContainer) o;
+		while (!members.isEmpty()) {
+			Member member = members.pop();
+			%>
+			<form method="POST" action="./DeleteMember">
+				<p><%=member.toString()%> </p>
+				<input type="hidden" name="memberId" value="<%=member.getId()%>" />
+				<input type="submit" value="Delete">
+			</form>
+			<%
+		}
 	}
 %>
-
 </body>
 </html>

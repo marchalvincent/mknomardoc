@@ -1,7 +1,6 @@
 package fr.upmc.ta.mdoc.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.upmc.ta.mdoc.dao.DAOMember;
-import fr.upmc.ta.mdoc.object.Member;
+import fr.upmc.ta.mdoc.object.MembersContainer;
 
 /**
  * Servlet implementation class DeleteMember
@@ -30,7 +29,7 @@ public class DeleteMember extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Member> members = DAOMember.instance.getAllMember();
+		MembersContainer members = DAOMember.instance.getAllMember();
 		request.getSession().setAttribute("members", members);
 		request.getRequestDispatcher("./DeleteMember.jsp").forward(request, response);
 	}
@@ -39,7 +38,17 @@ public class DeleteMember extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String memberIdString = request.getParameter("memberId");
+		
+		try {
+			int memberId = Integer.parseInt(memberIdString);
+			DAOMember.instance.deleteMember(memberId);
+			request.setAttribute("message", new String("You have succesful delete the member."));
+			
+		} catch (NumberFormatException e) {
+			request.setAttribute("message", new String("Impossible to delete the member."));
+		}
+		request.getServletContext().getRequestDispatcher("/Main.jsp").forward(request, response);
 	}
 
 }
