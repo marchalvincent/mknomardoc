@@ -1,6 +1,7 @@
-package fr.upmc.ta.mdoc;
+package fr.upmc.ta.mdoc.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class Login
  */
 @WebServlet("/Login")
-public class Login extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,11 +27,14 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		// test sur le login / mdp
-		
-		// redirection sur la page Welcome
-		response.sendRedirect("");
+		if (request.getParameter("login").equals(request.getParameter("mdp"))) {
+			// redirection sur la page Main
+			request.getRequestDispatcher("./Main.jsp").forward(request, response);
+		} else {
+			// Mot de passe faux
+			response.sendRedirect("./");
+		}
 	}
 
 	/**

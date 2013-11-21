@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-Welcome !
+Welcome !<br />
+<a href="./AddMember.jsp">Add member</a><br />
+<a href="./ModifyMember.jsp">Modify member</a><br />
+<a href="./DeleteMember.jsp">Delete member</a><br />
 </body>
 </html>
