@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>404</title>
 </head>
 <body>
-<form action="./AddMemberAction" method="POST">
-	Login : <input type="text" name="login" /><br />
-	Password : <input type="text" name="password" /><br />
-	Age : <input type="text" name="age" /><br />
-	<input type="submit" value="Ajouter" />
-</form>
+404
 </body>
 </html>

@@ -8,8 +8,16 @@
 </head>
 <body>
 Welcome !<br />
+<%
+String message = (String) request.getAttribute("message");
+if (message != null) {
+	%>
+	<p><%=message %></p>
+	<%
+}
+%>
 <a href="./AddMember.jsp">Add member</a><br />
-<a href="./ModifyMember.jsp">Modify member</a><br />
-<a href="./DeleteMember.jsp">Delete member</a><br />
+<a href="./ModifyMember">Modify member</a><br />
+<a href="./DeleteMember">Delete member</a><br />
 </body>
 </html>
