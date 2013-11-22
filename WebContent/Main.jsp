@@ -16,8 +16,8 @@ if (message != null) {
 	<%
 }
 %>
-<a href="./AddMember">Add member</a><br />
-<a href="./ModifyMember">Modify member</a><br />
-<a href="./DeleteMember">Delete member</a><br />
+<a href="./AddContact">Add contact</a><br />
+<a href="./UpdateContact">Update contact</a><br />
+<a href="./RemoveContact">Delete contact</a><br />
 </body>
 </html>

@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="./AddMember" method="POST">
-	Login : <input type="text" name="login" /><br />
-	Password : <input type="text" name="password" /><br />
-	Age : <input type="text" name="age" /><br />
-	<input type="submit" value="Ajouter" />
-</form>
+search contact
 </body>
 </html>

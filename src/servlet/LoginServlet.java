@@ -1,4 +1,4 @@
-package fr.upmc.ta.mdoc.servlet;
+package servlet;
 
 import java.io.IOException;
 
