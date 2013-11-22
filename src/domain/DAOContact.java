@@ -41,7 +41,7 @@ public class DAOContact {
 		return true;
 	}
 	
-	public boolean updateContact(long id, String firstname, String lastname, String emailC) {
+	public boolean updateContact(int id, String firstname, String lastname, String emailC) {
 		System.out.println("Update password id : " + id + ", firstname : " + firstname + ", lastname " +
 				lastname + ", emailC : " + emailC);
 		return true;

@@ -9,7 +9,7 @@ public class Contact {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private Address add;
+	private Address address;
 	private List<PhoneNumber> phones;
 	private List<ContactGroup> books;
 	
@@ -42,7 +42,7 @@ public class Contact {
 		this.email = email;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -51,11 +51,11 @@ public class Contact {
 	}
 	
 	public Address getAddress() {
-		return add;
+		return address;
 	}
 
 	public void setAddress(Address address) {
-		this.add = address;
+		this.address = address;
 	}
 
 	public List<ContactGroup> getBooks() {
