@@ -42,9 +42,11 @@ public class DeleteMember extends HttpServlet {
 		
 		try {
 			int memberId = Integer.parseInt(memberIdString);
-			DAOMember.instance.deleteMember(memberId);
-			request.setAttribute("message", new String("You have succesful delete the member."));
-			
+			boolean bool = DAOMember.instance.deleteMember(memberId);
+			if (bool)
+				request.setAttribute("message", new String("You have successful delete the member."));
+			else
+				request.setAttribute("message", new String("Impossible to delete the member."));
 		} catch (NumberFormatException e) {
 			request.setAttribute("message", new String("Impossible to delete the member."));
 		}

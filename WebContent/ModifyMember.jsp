@@ -20,10 +20,14 @@
 			<form method="POST" action="./ModifyMember">
 				<p><%=member.toString()%> </p>
 				<input type="hidden" name="memberId" value="<%=member.getId()%>" />
-				<input type="text" name="login" value="<%=member.getFirstName() %>" /><br />
-				<input type="text" name="password" value="<%=member.getFirstName() %>" /><br />
-				<input type="text" name="age" value="<%=member.getFirstName() %>" /><br />
-				<input type="submit" value="Delete">
+				Login : <input type="text" name="login" value="<%=member.getLogin() %>" /><br />
+				Age : <input type="text" name="age" value="<%=member.getAge() %>" /><br />
+				
+				<p>Modifier le password</p>
+				Password : <input type="password" name="oldPassword" value="" /><br />
+				New password : <input type="password" name="password1" value="" /><br />
+				Confirmation : <input type="password" name="password2" value="" /><br />
+				<input type="submit" value="Modify">
 			</form>
 			<%
 		}

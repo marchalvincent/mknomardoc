@@ -39,11 +39,44 @@ public class ModifyMember extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberIdString = request.getParameter("memberId");
-//		String memberIdString = request.getParameter("memberId");
-//		String memberIdString = request.getParameter("memberId");
-//		String memberIdString = request.getParameter("memberId");
-//		String memberIdString = request.getParameter("memberId");
-		// TODO
+		String login = request.getParameter("login");
+		String ageString = request.getParameter("age");
+		String oldPassword = request.getParameter("oldPassword");
+		String password1 = request.getParameter("password1");
+		String password2 = request.getParameter("password2");
+		
+		StringBuilder sb = new StringBuilder();
+		try {
+			int memberId = Integer.parseInt(memberIdString);
+			
+			int age = 0;
+			try {
+				age = Integer.parseInt(ageString);
+			} catch (NumberFormatException e) {
+				// already tested in JS
+			}
+			
+			// MAJ of informations
+			boolean boolInfos = DAOMember.instance.updateMember(memberId, login, age);
+			if (boolInfos)
+				sb.append("You have sucessful modify the member information.<br />");
+			else
+				sb.append("Impossible to modify the member informations.<br />");
+			
+			// MAJ of password 
+			if (password1.equals(password2)) {
+				boolean boolPass = DAOMember.instance.updateMemberPassword(memberId, oldPassword, password1);
+				if (boolPass)
+					sb.append("You have sucessful modify the member password.");
+				else
+					sb.append("Impossible to modify the member password.");
+			}
+		} catch (NumberFormatException e) {
+			request.setAttribute("message", new String("Impossible to modify the member."));
+		}
+		
+		request.setAttribute("message", new String(sb.toString()));
+		request.getServletContext().getRequestDispatcher("/Main.jsp").forward(request, response);
 	}
 
 }
