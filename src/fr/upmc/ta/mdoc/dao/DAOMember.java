@@ -28,12 +28,21 @@ public class DAOMember {
 		return true;
 	}
 	
-	public void updateMember() {
-		// TODO
+	public boolean updateMember(int memberId, String login, int age) {
+		System.out.println("Update password member : " + memberId + ", login : " + login + ", age " +
+				age + "");
+		return true;
 	}
 	
-	public void deleteMember(int memberId) {
+	public boolean updateMemberPassword(int memberId, String password, String newPassword) {
+		System.out.println("Update password member : " + memberId + ", old pass : " + password + ", new pass " +
+				newPassword + "");
+		return true;
+	}
+	
+	public boolean deleteMember(int memberId) {
 		System.out.println("Delete the member with the id : " + memberId);
+		return true;
 	}
 	
 	
