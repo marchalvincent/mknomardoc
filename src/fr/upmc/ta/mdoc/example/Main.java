@@ -11,6 +11,7 @@ public class Main {
 	public static void main(String[] args) {
 		Session session = null;
 		try{
+			@SuppressWarnings("deprecation")
 			SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 			session = sessionFactory.openSession();
 			//begin a transaction

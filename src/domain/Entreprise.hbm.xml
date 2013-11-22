@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 nov. 2013 23:07:01 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <joined-subclass name="domain.Entreprise" extends="domain.Contact" table="ENTREPRISE" lazy="false">
+        <key>
+            <column name="ID" />
+        </key>
+        <property name="numSiret" type="int">
+            <column name="NUMSIRET" />
+        </property>
+    </joined-subclass>
+</hibernate-mapping>

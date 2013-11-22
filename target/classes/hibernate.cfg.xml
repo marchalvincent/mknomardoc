@@ -15,7 +15,11 @@
     	<property name="hbm2ddl.auto">update</property>
     	
     	<!-- Mapping vers nos classe persistantes -->
-    	<mapping resource="fr/upmc/ta/mdoc/object/Member.hbm.xml"></mapping>
+    	<mapping resource="domain/Address.hbm.xml"></mapping>
+    	<mapping resource="domain/Contact.hbm.xml"></mapping>
+    	<mapping resource="domain/ContactGroup.hbm.xml"></mapping>
+    	<mapping resource="domain/Entreprise.hbm.xml"></mapping>
+    	<mapping resource="domain/PhoneNumber.hbm.xml"></mapping>
     	
     </session-factory>
 </hibernate-configuration>
