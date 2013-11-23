@@ -18,12 +18,12 @@ public class Main {
 			org.hibernate.Transaction tx = session.beginTransaction();
 			//create a contact and save it into the DB
 			Contact member = new Contact();
-			member.setId(1);
-			member.setFirstName("Robbie");
+			member.setId(2);
+			member.setFirstName("Mich");
 			//save the contact into the DB
 			session.save(member); // or session.persist(contact);
 			//if you modify one of its properties, no need to save it again
-			member.setLastName("Robin");
+			member.setLastName("Knor");
 			//mandatory to flush the data into the DB
 			tx.commit();
 		}catch(Exception e){
