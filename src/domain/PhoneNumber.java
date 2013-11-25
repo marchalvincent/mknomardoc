@@ -1,9 +1,11 @@
 package domain;
 
+import util.PhoneKind;
+
 public class PhoneNumber {
 
 	private int id;
-	private String phoneKind;
+	private PhoneKind phoneKind;
 	private String phoneNumber;
 	private Contact contact;
 	
@@ -18,11 +20,18 @@ public class PhoneNumber {
 	}
 
 	public String getPhoneKind() {
-		return phoneKind;
+		return phoneKind.toString();
 	}
 
 	public void setPhoneKind(String phoneKind) {
-		this.phoneKind = phoneKind;
+		for (PhoneKind kind : PhoneKind.values()) {
+			if (kind.toString().equals(phoneKind)) {
+				this.phoneKind = kind;
+				return;
+			}
+		}
+		// kind not found
+		this.phoneKind = PhoneKind.fixe;
 	}
 
 	public String getPhoneNumber() {

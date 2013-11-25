@@ -6,7 +6,7 @@
     <class name="domain.ContactGroup" table="CONTACTGROUP">
         <id name="groupId" type="int">
             <column name="GROUPID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="groupName" type="java.lang.String">
             <column name="GROUPNAME" />
