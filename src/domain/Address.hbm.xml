@@ -6,7 +6,7 @@
     <class name="domain.Address" table="ADDRESS">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="street" type="java.lang.String">
             <column name="STREET" />

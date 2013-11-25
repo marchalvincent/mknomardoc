@@ -1,4 +1,6 @@
-package fr.upmc.ta.mdoc.example;
+package example;
+
+import java.io.Serializable;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,7 +23,10 @@ public class Main {
 			member.setId(2);
 			member.setFirstName("Mich");
 			//save the contact into the DB
-			session.save(member); // or session.persist(contact);
+			Serializable id = session.save(member); // or session.persist(contact);
+//			session.update(member);
+//			session.delete(member);
+			
 			//if you modify one of its properties, no need to save it again
 			member.setLastName("Knor");
 			//mandatory to flush the data into the DB

@@ -6,7 +6,7 @@
     <class name="domain.PhoneNumber" table="PHONENUMBER">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="phoneKind" type="java.lang.String">
             <column name="PHONEKIND" />
