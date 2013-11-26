@@ -2,7 +2,7 @@ package domain;
 
 import util.ContactsContainer;
 
-public class DAOContact {
+public class DAOContact extends AbstractDAO {
 
 	public static DAOContact instance = new DAOContact();
 	

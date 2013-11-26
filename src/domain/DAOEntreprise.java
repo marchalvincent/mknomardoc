@@ -1,6 +1,6 @@
 package domain;
 
-public class DAOEntreprise {
+public class DAOEntreprise extends AbstractDAO {
 
 	// TODO voir pour l'héritage
 }

@@ -28,13 +28,9 @@ public class DAOAddressTest {
 		// insert 
 		Address address = DAOAddress.instance.addAddress("streetTest2", "cityTest2", "zipTest2", "countryTest2");
 		// and update
-		assertTrue(DAOAddress.instance.updateAddress(address.getId(), "newStreetTest2", "newCityTest2", "newZipTest2", "newCountryTest2"));
-		// verification, make the changes handly for test with the new values in database
-		address.setStreet("newStreetTest2");
-		address.setCity("newCityTest2");
-		address.setZip("newZipTest2");
-		address.setCountry("newCountryTest2");
-		this.verification(address);
+		Address addressUpdated = DAOAddress.instance.updateAddress(address.getId(), "newStreetTest2", "newCityTest2", "newZipTest2", "newCountryTest2");
+		// verification, test with the new values in database
+		this.verification(addressUpdated);
 	}
 	
 	@Test

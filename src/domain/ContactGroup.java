@@ -1,16 +1,16 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ContactGroup {
 
 	private int groupId;
 	private String groupName;
-	private List<Contact> contacts;
+	private Set<Contact> contacts;
 	
 	public ContactGroup() {
-		contacts = new ArrayList<>();
+		contacts = new HashSet<>();
 	}
 
 	public int getGroupId() {
@@ -25,15 +25,15 @@ public class ContactGroup {
 		return groupName;
 	}
 
-	public void setGroupName(String groupeName) {
-		this.groupName = groupeName;
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
 	}
 
-	public List<Contact> getContacts() {
+	public Set<Contact> getContacts() {
 		return contacts;
 	}
 	
-	public void setContacts(List<Contact> contacts) {
+	public void setContacts(Set<Contact> contacts) {
 		this.contacts = contacts;
 	}
 }
