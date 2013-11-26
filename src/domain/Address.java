@@ -7,13 +7,14 @@ public class Address {
 	private String city;
 	private String zip;
 	private String country;
-	
-	public Address() {}
-	
+
+	public Address() {
+	}
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}

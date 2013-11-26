@@ -5,9 +5,8 @@ import util.ContactsContainer;
 public class DAOContact extends AbstractDAO {
 
 	public static DAOContact instance = new DAOContact();
-	
+
 	public ContactsContainer getAllMember() {
-		
 		ContactsContainer container = new ContactsContainer();
 		Contact m1 = new Contact();
 		m1.setId(1);
@@ -27,12 +26,13 @@ public class DAOContact extends AbstractDAO {
 		m3.setLastName("tran");
 		m3.setEmail("mamadidi.tran@gmail.com");
 		container.add(m3);
-		
 		return container;
 	}
-	
-	public boolean addContact(int id, String firstname, String lastname, String emailC) {
-		System.out.println("Create member : firstname : " + firstname + ", lastname : " + lastname + ", emailC " + emailC + ".");
+
+	public boolean addContact(int id, String firstname, String lastname,
+			String emailC) {
+		System.out.println("Create member : firstname : " + firstname
+				+ ", lastname : " + lastname + ", emailC " + emailC + ".");
 		Contact contact = new Contact();
 		contact.setId(id);
 		contact.setFirstName(firstname);
@@ -40,13 +40,16 @@ public class DAOContact extends AbstractDAO {
 		contact.setEmail(emailC);
 		return true;
 	}
-	
-	public boolean updateContact(int id, String firstname, String lastname, String emailC) {
-		System.out.println("Update password id : " + id + ", firstname : " + firstname + ", lastname " +
-				lastname + ", emailC : " + emailC);
+
+	public boolean updateContact(int id, String firstname, String lastname,
+			String emailC) {
+		System.out
+				.println("Update password id : " + id + ", firstname : "
+						+ firstname + ", lastname " + lastname + ", emailC : "
+						+ emailC);
 		return true;
 	}
-	
+
 	public boolean deleteContact(int memberId) {
 		System.out.println("Delete the member with the id : " + memberId);
 		return true;

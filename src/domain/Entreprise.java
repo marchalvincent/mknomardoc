@@ -1,11 +1,12 @@
 package domain;
 
 public class Entreprise extends Contact {
-	
+
 	int numSiret;
-	
-	public Entreprise() {}
-	
+
+	public Entreprise() {
+	}
+
 	public int getNumSiret() {
 		return numSiret;
 	}
@@ -13,5 +14,4 @@ public class Entreprise extends Contact {
 	public void setNumSiret(int numSiret) {
 		this.numSiret = numSiret;
 	}
-	
 }

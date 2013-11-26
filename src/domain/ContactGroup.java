@@ -8,7 +8,7 @@ public class ContactGroup {
 	private int groupId;
 	private String groupName;
 	private Set<Contact> contacts;
-	
+
 	public ContactGroup() {
 		contacts = new HashSet<>();
 	}
@@ -32,7 +32,7 @@ public class ContactGroup {
 	public Set<Contact> getContacts() {
 		return contacts;
 	}
-	
+
 	public void setContacts(Set<Contact> contacts) {
 		this.contacts = contacts;
 	}
