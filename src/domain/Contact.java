@@ -12,7 +12,7 @@ public class Contact {
 	private Address address;
 	private Set<PhoneNumber> phones;
 	private Set<ContactGroup> books;
-	
+
 	public Contact() {
 		phones = new HashSet<>();
 		books = new HashSet<>();
@@ -49,7 +49,7 @@ public class Contact {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public Address getAddress() {
 		return address;
 	}
@@ -73,5 +73,4 @@ public class Contact {
 	public void setPhones(Set<PhoneNumber> phones) {
 		this.phones = phones;
 	}
-	
 }

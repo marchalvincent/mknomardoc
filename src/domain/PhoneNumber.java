@@ -8,8 +8,9 @@ public class PhoneNumber {
 	private PhoneKind phoneKind;
 	private String phoneNumber;
 	private Contact contact;
-	
-	public PhoneNumber() {}
+
+	public PhoneNumber() {
+	}
 
 	public int getId() {
 		return id;
@@ -49,5 +50,4 @@ public class PhoneNumber {
 	public void setContact(Contact contact) {
 		this.contact = contact;
 	}
-	
 }
