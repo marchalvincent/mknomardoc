@@ -3,50 +3,43 @@ package domain;
 import java.io.Serializable;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
-public class DAOAddress {
+public class DAOAddress extends AbstractDAO {
 
 	public static DAOAddress instance = new DAOAddress();
+	public DAOAddress() { super(); }
 	
-	private Session session;
-	private Transaction tx;
-	
-	public DAOAddress() {
-		super();
-	}
-	
-	
-	@SuppressWarnings("deprecation")
-	private void openSession() throws HibernateException {
-		session = new Configuration().configure().buildSessionFactory().openSession();
-		tx = session.beginTransaction();
-	}
-	
-	private void closeSession() throws HibernateException {
-		tx.commit();
-		session.disconnect();
-		session.close();
-	}
-	
-	public Address getById(Integer id) {
+	/**
+	 * Get an address by id.
+	 * @param id
+	 * @return the address coresponding with this id.
+	 * @throws HibernateException
+	 */
+	public Address getById(Integer id) throws HibernateException {
 		try {
 			this.openSession();
 			
 			Object addressO = session.get(Address.class, id);
-			if (addressO != null && addressO instanceof Address) {
-				this.closeSession();
+			if (addressO != null && addressO instanceof Address)
 				return (Address) addressO;
-			}
 			
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		} finally {
+			this.closeSession();
 		}
 		throw new HibernateException("Impossible to get the Address. getById(" + id + ").");
 	}
 	
+	/**
+	 * Add a new Address
+	 * @param street
+	 * @param city
+	 * @param zip
+	 * @param country
+	 * @return the Address created in database
+	 * @throws HibernateException
+	 */
 	public Address addAddress(String street, String city, String zip, String country) throws HibernateException {
 		
 		Address address = new Address();
@@ -64,16 +57,28 @@ public class DAOAddress {
 			else // all ids are Integer in our database
 				throw new HibernateException("Impossible to get the id of the new Address.");
 			
-			this.closeSession();
 			return address;
 			
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		} finally {
+			this.closeSession();
 		}
 		throw new HibernateException("Impossible to create the Address.");
 	}
 	
-	public boolean updateAddress(int id, String street, String city, String zip, String country) {
+	/**
+	 * Update an address.
+	 * @param id of the address to update
+	 * @param street, the new street
+	 * @param city, the new city
+	 * @param zip, the new zip
+	 * @param country, the new country
+	 * @return the Address updated
+	 * @throws HibernateException
+	 */
+	public Address updateAddress(int id, String street, String city, String zip, String country) 
+	throws HibernateException {
 
 		Address address = this.getById(id);
 		address.setId(id);
@@ -85,25 +90,33 @@ public class DAOAddress {
 		try {
 			this.openSession();
 			session.update(address);
-			this.closeSession();
+			return address;
 		} catch (HibernateException e) {
 			e.printStackTrace();
-			return false;
+		}  finally {
+			this.closeSession();
 		}
-		return true;
+		throw new HibernateException("Impossible to update the address.");
 	}
 	
+	/**
+	 * Delete an address from the database.
+	 * @param id the id of the address to delete.
+	 * @return false if the delete fail, true otherwise.
+	 */
 	public boolean deleteAddress(int id) {
-		// TODO tester
+		// TODO tester + voir la répercussion sur contact
 		Address address = this.getById(id);
 		try {
 			this.openSession();
 			session.delete(address);
-			this.closeSession();
+			
+			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
-			return false;
+		} finally {
+			this.closeSession();
 		}
-		return true;
+		return false;
 	}
 }

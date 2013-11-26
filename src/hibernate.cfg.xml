@@ -12,7 +12,8 @@
     	<property name="show_sql">true</property> 
     	<property name="connection.pool_size">1</property>
     	
-    	<property name="hbm2ddl.auto">update</property>
+    	<property name="hbm2ddl.auto">create</property>
+    	<!-- <property name="hbm2ddl.auto">update</property>  -->
     	
     	<!-- Mapping vers nos classe persistantes -->
     	<mapping resource="domain/Address.hbm.xml"></mapping>
