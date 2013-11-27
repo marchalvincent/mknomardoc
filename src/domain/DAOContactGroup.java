@@ -13,11 +13,11 @@ public class DAOContactGroup extends AbstractDAO {
 	}
 
 	/**
-	 * Get an ContactGroup by id.
+	 * Get an {@link ContactGroup} by id.
 	 * 
 	 * @param id
 	 * @return the contact group coresponding with this id.
-	 * @throws HibernateException
+	 * @throws {@link HibernateException}
 	 */
 	public ContactGroup getById(Integer id) throws HibernateException {
 		try {
@@ -35,12 +35,12 @@ public class DAOContactGroup extends AbstractDAO {
 	}
 
 	/**
-	 * Add a new ContactGroup
+	 * Add a new {@link ContactGroup}
 	 * 
 	 * @param groupName
 	 * @param contacts
-	 * @return the ContactGroup created in database.
-	 * @throws HibernateException
+	 * @return the {@link ContactGroup} created in database.
+	 * @throws {@link HibernateException}
 	 */
 	public ContactGroup addContactGroup(String groupName, Set<Contact> contacts)
 			throws HibernateException {
@@ -66,12 +66,12 @@ public class DAOContactGroup extends AbstractDAO {
 	}
 
 	/**
-	 * Add a contact to a group in database.
+	 * Add a {@link Contact} to a group in database.
 	 * 
 	 * @param id
 	 * @param contact
 	 * @return
-	 * @throws HibernateException
+	 * @throws {@link HibernateException}
 	 */
 	// TODO voir si besoin
 	public boolean addContactToGroup(int idGroup, Contact contact)
@@ -80,13 +80,13 @@ public class DAOContactGroup extends AbstractDAO {
 	}
 
 	/**
-	 * Update a contact group.
+	 * Update a {@link Contact}  group.
 	 * 
 	 * @param id
 	 * @param groupName
 	 * @param contacts
-	 * @return the contact group updated.
-	 * @throws HibernateException
+	 * @return the {@link ContactGroup} updated.
+	 * @throws {@link HibernateException}
 	 */
 	public ContactGroup updateContactGroup(int id, String groupName,
 			Set<Contact> contacts) throws HibernateException {
@@ -109,7 +109,7 @@ public class DAOContactGroup extends AbstractDAO {
 	}
 
 	/**
-	 * Delete a ContactGroup from database
+	 * Delete a {@link ContactGroup} from database
 	 * 
 	 * @param id
 	 * @return false if the delete fail, true otherwise.

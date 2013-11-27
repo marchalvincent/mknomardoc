@@ -12,11 +12,11 @@ public class DAOAddress extends AbstractDAO {
 	}
 
 	/**
-	 * Get an address by id.
+	 * Get an {@link Address} by id.
 	 * 
 	 * @param id
-	 * @return the address coresponding with this id.
-	 * @throws HibernateException
+	 * @return the {@link Address} corresponding with this id.
+	 * @throws {@link HibernateException}
 	 */
 	public Address getById(Integer id) throws HibernateException {
 		try {
@@ -34,14 +34,14 @@ public class DAOAddress extends AbstractDAO {
 	}
 
 	/**
-	 * Add a new Address
+	 * Add a new {@link Address}.
 	 * 
 	 * @param street
 	 * @param city
 	 * @param zip
 	 * @param country
-	 * @return the Address created in database
-	 * @throws HibernateException
+	 * @return the {@link Address} created in database.
+	 * @throws {@link HibernateException}
 	 */
 	public Address addAddress(String street, String city, String zip,
 			String country) throws HibernateException {
@@ -68,7 +68,7 @@ public class DAOAddress extends AbstractDAO {
 	}
 
 	/**
-	 * Update an address.
+	 * Update an {@link Address}.
 	 * 
 	 * @param id
 	 *            of the address to update
@@ -80,8 +80,8 @@ public class DAOAddress extends AbstractDAO {
 	 *            the new zip
 	 * @param country
 	 *            the new country
-	 * @return the Address updated
-	 * @throws HibernateException
+	 * @return the {@link Address} updated.
+	 * @throws {@link HibernateException}
 	 */
 	public Address updateAddress(int id, String street, String city,
 			String zip, String country) throws HibernateException {
@@ -104,10 +104,10 @@ public class DAOAddress extends AbstractDAO {
 	}
 
 	/**
-	 * Delete an address from the database.
+	 * Delete an {@link Address} from the database.
 	 * 
 	 * @param id
-	 *            the id of the address to delete.
+	 *            the id of the {@link Address} to delete.
 	 * @return false if the delete fail, true otherwise.
 	 */
 	public boolean deleteAddress(int id) {

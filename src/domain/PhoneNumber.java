@@ -1,7 +1,10 @@
 package domain;
 
 import util.PhoneKind;
-
+/*
+ * TODO MKR to VMA : DELETE AFTER set hibernate xml
+ * 		Tous en Cascade sauf Contact => Lazzy, on va pas delete un contact si il a plus de number ...
+ */
 public class PhoneNumber {
 
 	private int id;
