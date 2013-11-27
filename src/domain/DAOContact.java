@@ -1,57 +1,152 @@
 package domain;
 
+import java.io.Serializable;
+
+import org.hibernate.HibernateException;
+
 import util.ContactsContainer;
 
 public class DAOContact extends AbstractDAO {
 
 	public static DAOContact instance = new DAOContact();
 
-	public ContactsContainer getAllMember() {
-		ContactsContainer container = new ContactsContainer();
-		Contact m1 = new Contact();
-		m1.setId(1);
-		m1.setFirstName("michel");
-		m1.setLastName("Knoertzer");
-		m1.setEmail("mich.kno@gmail.com");
-		container.add(m1);
-		Contact m2 = new Contact();
-		m2.setId(2);
-		m2.setFirstName("vincent");
-		m2.setLastName("marchal");
-		m2.setEmail("vinc.mar@gmail.com");
-		container.add(m2);
-		Contact m3 = new Contact();
-		m3.setId(2);
-		m3.setFirstName("mamadidi");
-		m3.setLastName("tran");
-		m3.setEmail("mamadidi.tran@gmail.com");
-		container.add(m3);
-		return container;
+	public DAOContact() {
+		super();
+	}
+	
+	/**
+	 * Get an {@link Contact} by his id.
+	 * @param id
+	 * @return the contact corresponding with this id.
+	 * @throws {@link HibernateException}
+	 */
+	public Contact getById(Integer id) throws HibernateException {
+		try {
+			this.openSession();
+			Object contactO = session.get(Contact.class, id);
+			if(contactO != null && contactO instanceof Contact)
+				return (Contact) contactO;
+		}
+		catch(HibernateException e){
+			e.printStackTrace();
+		}
+		finally{
+			this.closeSession();
+		}
+		throw new HibernateException("Impossible to get the Contact. getById("
+				+ id + ").");
+	}
+	
+	/**
+	 * Get all of member contained in this Database.
+	 * @return all of member contained in this Database in the {@link ContactsContainer} object.
+	 * @throws {@link HibernateException}
+	 */
+	public ContactsContainer getAllMember() throws HibernateException{
+		//ContactsContainer contactContainer = new ContactsContainer();
+		
+		try{
+			this.openSession();
+			//TODO MKR : we have to do this ! RETURN Null ! 
+			//Object  = session.get(Contact.class);
+			return null;
+		}
+		catch(HibernateException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			this.closeSession();
+		}
+		return null;
 	}
 
-	public boolean addContact(int id, String firstname, String lastname,
-			String emailC) {
-		System.out.println("Create member : firstname : " + firstname
-				+ ", lastname : " + lastname + ", emailC " + emailC + ".");
+	/**
+	 * Add a new {@link Contact}
+	 * @param id
+	 * @param firstname
+	 * @param lastname
+	 * @param emailC
+	 * @return the {@link Contact} created in database
+	 * @throws {@link HibernateException}
+	 */
+	public Contact addContact(String firstname, String lastname,
+			String emailC) throws HibernateException{
+		
 		Contact contact = new Contact();
-		contact.setId(id);
 		contact.setFirstName(firstname);
 		contact.setLastName(lastname);
 		contact.setEmail(emailC);
-		return true;
+		try{
+			this.openSession();
+			Serializable newID = session.save(contact);
+			if(newID instanceof Integer)
+				contact.setId((Integer) newID);
+			else //We have to stay in the if bloc, all ids are Integer
+				throw new HibernateException(
+						"Impossible to get the new ID of the Contact saved.");
+			return contact;
+		}catch(HibernateException e)
+		{
+			e.printStackTrace();
+		}
+		finally {
+			this.closeSession();
+		}
+		throw new HibernateException("Impossible to create the Contact.");
+		
 	}
 
-	public boolean updateContact(int id, String firstname, String lastname,
-			String emailC) {
-		System.out
-				.println("Update password id : " + id + ", firstname : "
-						+ firstname + ", lastname " + lastname + ", emailC : "
-						+ emailC);
-		return true;
+	/**
+	 * Update an {@link Contact}.
+	 * @param id
+	 * @param firstname
+	 * @param lastname
+	 * @param emailC
+	 * @return the {@link Contact} updated.
+	 * @throws HibernateException
+	 */
+	public Contact updateContact(int id, String firstname, String lastname,
+			String emailC) throws HibernateException{
+		Contact contact = this.getById(id);
+		contact.setFirstName(firstname);
+		contact.setLastName(lastname);
+		contact.setEmail(emailC);
+		
+		try{
+			this.openSession();
+			session.update(contact);
+			return contact;
+		}
+		catch(HibernateException e){
+			e.printStackTrace();
+		}
+		finally{
+			this.closeSession();
+		}
+		throw new HibernateException("Impossible to update the Contact where the id is " + id + " .");
 	}
 
+	/**
+	 * Delete an {@link Contact} from the database.
+	 * @param memberId
+	 * 					the memberId of the {@link Contact} to delete.
+	 * @return
+	 */
 	public boolean deleteContact(int memberId) {
-		System.out.println("Delete the member with the id : " + memberId);
-		return true;
+		Contact contact = this.getById(memberId);
+		try{
+			this.openSession();
+			session.delete(contact);
+			return true;
+		}
+		catch(HibernateException e){
+			e.printStackTrace();
+		}
+		finally{
+			this.closeSession();
+		}
+		return false;
 	}
 }

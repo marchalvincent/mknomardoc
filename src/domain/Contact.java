@@ -3,6 +3,11 @@ package domain;
 import java.util.HashSet;
 import java.util.Set;
 
+
+/*
+ * TODO MKR TO VMA : DELETE this message :
+ * 	Les champs Phones et Books doivent être lazzy
+ */
 public class Contact {
 
 	private int id;

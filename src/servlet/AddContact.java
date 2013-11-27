@@ -1,11 +1,14 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import domain.Contact;
 import domain.DAOContact;
 
 /**
@@ -40,9 +43,9 @@ public class AddContact extends HttpServlet {
 		String firstname = request.getParameter("firstName");
 		String lastname = request.getParameter("lastName");
 		String emailC = request.getParameter("emailC");
-		boolean success = DAOContact.instance.addContact(0, firstname,
+		Contact contact = DAOContact.instance.addContact(firstname,
 				lastname, emailC);
-		if (success) {
+		if (contact != null) {
 			request.setAttribute("message", new String(
 					"You have succesful create the member."));
 		} else {

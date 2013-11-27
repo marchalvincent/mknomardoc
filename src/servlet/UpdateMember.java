@@ -1,12 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import util.ContactsContainer;
+import domain.Contact;
 import domain.DAOContact;
 
 /**
@@ -48,9 +51,9 @@ public class UpdateMember extends HttpServlet {
 		try {
 			int memberId = Integer.parseInt(memberIdString);
 			// MAJ of informations
-			boolean boolInfos = DAOContact.instance.updateContact(memberId,
+			Contact contact = DAOContact.instance.updateContact(memberId,
 					firstName, lastName, email);
-			if (boolInfos)
+			if (contact != null)
 				sb.append("You have sucessful modify the member information.<br />");
 			else sb.append("Impossible to modify the member informations.<br />");
 		} catch (NumberFormatException e) {
