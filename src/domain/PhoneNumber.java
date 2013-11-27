@@ -13,6 +13,7 @@ public class PhoneNumber {
 	private Contact contact;
 
 	public PhoneNumber() {
+		super();
 	}
 
 	public int getId() {
