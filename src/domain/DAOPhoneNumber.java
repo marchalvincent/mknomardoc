@@ -53,7 +53,7 @@ public class DAOPhoneNumber extends AbstractDAO {
 			if (newId instanceof Integer)
 				phone.setId((Integer) newId);
 			else // all ids are Integer in our database
-			throw new HibernateException(
+				throw new HibernateException(
 					"Impossible to get the id of the new phone number.");
 			return phone;
 		} catch (HibernateException e) {
@@ -86,8 +86,7 @@ public class DAOPhoneNumber extends AbstractDAO {
 			session.save(newPhoneNumber);
 			return newPhoneNumber;
 		}
-		catch(HibernateException e)
-		{
+		catch(HibernateException e) {
 			e.printStackTrace();
 		}
 		finally {
@@ -108,11 +107,10 @@ public class DAOPhoneNumber extends AbstractDAO {
 			session.delete(newPhoneNumber);
 			return true;
 		}
-		catch(HibernateException e)
-		{
+		catch(HibernateException e) {
 			e.printStackTrace();
 		}
-		finally{
+		finally {
 			this.closeSession();
 		}
 		return false;

@@ -48,7 +48,6 @@ public class DAOAddressTest {
 			// a get must throw an exception
 			DAOAddress.instance.getById(address.getId());
 			fail();
-		} catch (HibernateException e) {
-		}
+		} catch (HibernateException e) {}
 	}
 }
